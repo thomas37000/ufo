@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import axios from 'axios';
 import Api from '../api/api';
+import Home from './Home';
 import Card from './Card/Card';
 import './Card/Card.css';
 
@@ -26,6 +27,7 @@ const GetApi = (props, id) => {
 
   return (
     <div className='ufoGrid'>
+      <Home />
       {datas.map((data) => (
         <Card key={data.id} data={data} />
       ))}
