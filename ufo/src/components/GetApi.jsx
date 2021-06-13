@@ -26,12 +26,14 @@ const GetApi = (props, id) => {
   // const { cardById, id } = data;
 
   return (
-    <div className='ufoGrid'>
+    <>
       <Home />
-      {datas.map((data) => (
-        <Card key={data.id} data={data} />
-      ))}
-    </div>
+      <div className='ufoGrid'>
+        {datas.map((data) => (
+          <Card key={data.id} data={data} />
+        ))}
+      </div>
+    </>
   );
 };
 

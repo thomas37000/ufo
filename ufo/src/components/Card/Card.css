@@ -5,12 +5,42 @@
   flex-wrap: wrap;
 }
 
-.ufoContainer {
-
-}
-
 .ufoCard {
   width: 300px;
   height: 400px;
   background: #f1f1f1;
+}
+
+.ufoContainer {
+  display: flex;
+  justify-content: space-around;
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: grey;
+  color: #fff;
+  margin: 0.5rem;
+}
+
+.ufoImg img {
+  height: 400px;
+}
+
+.ufoName {
+  display: flex;
+  justify-content: start;
+  width: 300px;
+}
+
+.ufoDescription {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.ufoLink {
+  font-family: 'Orbitron';
+  color: red;
+}
+
+.ufoPersonality li {
+  list-style: none;
 }

@@ -12,7 +12,7 @@ export default function Card({ data }) {
           <div>
             <img src={image} alt='' />
           </div>
-          <div>{name}</div>
+          <div className="ufoLink">{name}</div>
         </div>
       </Link>
     </div>
