@@ -6,7 +6,7 @@ import Api from '../api/api';
 import Card from './Card/Card';
 import './Card/Card.css';
 
-const GetApi = (props) => {
+const GetApi = (props, id) => {
   // ---------------------------------------------------------------------------
   // STATE CONTEXT
   // ---------------------------------------------------------------------------
@@ -22,9 +22,10 @@ const GetApi = (props) => {
       setDatas(res.data);
     });
   }, []);
+  // const { cardById, id } = data;
 
   return (
-    <div className="ufoGrid">
+    <div className='ufoGrid'>
       {datas.map((data) => (
         <Card key={data.id} data={data} />
       ))}
