@@ -1,0 +1,17 @@
+.ufoGrid {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ufoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.ufoCard {
+  width: 300px;
+  height: 400px;
+  background: #f1f1f1;
+}

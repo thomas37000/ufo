@@ -1,34 +1,35 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import axios from 'axios';
 import Api from '../api/api';
+import Card from './Card/Card';
+import './Card/Card.css';
 
 const GetApi = (props) => {
   // ---------------------------------------------------------------------------
   // STATE CONTEXT
   // ---------------------------------------------------------------------------
 
-  const [items, setItems] = useState([]);
-  const [maxItems, setMaxItems] = useState([]);
+  const [datas, setDatas] = useState([]);
 
   // ---------------------------------------------------------------------------
   // API CALL
-  // ---------------------------------------------------------------------------  
+  // ---------------------------------------------------------------------------
   useEffect(() => {
     axios.get(Api).then((res) => {
       console.log(res.data);
-      setItems(res.data);
+      setDatas(res.data);
     });
   }, []);
 
-
-  const { children } = props;
-
   return (
-    <div>eeee</div>
+    <div className="ufoGrid">
+      {datas.map((data) => (
+        <Card key={data.id} data={data} />
+      ))}
+    </div>
   );
 };
-
 
 export default GetApi;
