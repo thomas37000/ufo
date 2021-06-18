@@ -21,7 +21,9 @@
 }
 
 .ufoImg img {
-  height: 400px;
+  border-radius: 50%;
+  border: 10px solid #f1f1f1;
+  margin: 1rem;
 }
 
 .ufoName {
