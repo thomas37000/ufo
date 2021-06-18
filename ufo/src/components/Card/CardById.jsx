@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { IoMdPlanet } from 'react-icons/io';
+import { WiAlien } from 'react-icons/wi';
 import './Card.css';
 
 export default function CardById() {
@@ -46,11 +48,17 @@ export default function CardById() {
         <div className='ufoName'>
           <h2>{name}</h2>
         </div>
+        <div className='ufoAge'>
+          <div>
+            <WiAlien />
+            {age} <IoMdPlanet /> {location}
+          </div>
+        </div>
         <div>{description}</div>
         <div>genre: {gender}</div>
-        <div>ville: {location}</div>
+
         <div>espèce: {species}</div>
-        <div>âge: {age}</div>
+
         <div className='ufoPersonality'>
           personnalité(e):
           {caractère.map((c) => {

@@ -26,10 +26,18 @@
   margin: 1rem;
 }
 
-.ufoName {
+.ufoName, .ufoAge {
   display: flex;
   justify-content: start;
-  width: 300px;
+  font-size: x-large;
+}
+
+.ufoAge {
+  margin-bottom: 1rem;
+}
+
+.testIcon {
+  background-color: red;
 }
 
 .ufoDescription {
