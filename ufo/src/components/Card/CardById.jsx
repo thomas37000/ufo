@@ -49,9 +49,9 @@ export default function CardById() {
           <h2>{name}</h2>
         </div>
         <div className='ufoAge'>
-          <div>
-            <WiAlien />
-            {age} <IoMdPlanet /> {location}
+          <div className='ufoDesc'>
+            <WiAlien className='alienIcon' />
+            {age} <IoMdPlanet className='alienIcon'/> {location}
           </div>
         </div>
         <div>{description}</div>

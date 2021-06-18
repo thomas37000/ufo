@@ -25,19 +25,28 @@
   border: 10px solid #f1f1f1;
   margin: 1rem;
 }
+.ufoName {
+  font-family: 'Orbitron';
+}
 
-.ufoName, .ufoAge {
+.ufoName,
+.ufoAge {
   display: flex;
   justify-content: start;
   font-size: x-large;
+}
+.ufoDesc {
+  display: flex;
+  align-items: center;
 }
 
 .ufoAge {
   margin-bottom: 1rem;
 }
 
-.testIcon {
-  background-color: red;
+.alienIcon {
+  font-size: xx-large;
+  margin: 0 10px;
 }
 
 .ufoDescription {
