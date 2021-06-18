@@ -7,7 +7,7 @@ import Home from './Home';
 import Card from './Card/Card';
 import './Card/Card.css';
 
-const GetApi = (props, id) => {
+const AllAliens = (props, id) => {
   // ---------------------------------------------------------------------------
   // STATE CONTEXT
   // ---------------------------------------------------------------------------
@@ -37,4 +37,4 @@ const GetApi = (props, id) => {
   );
 };
 
-export default GetApi;
+export default AllAliens;
