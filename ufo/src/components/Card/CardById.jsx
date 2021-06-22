@@ -18,6 +18,7 @@ export default function CardById() {
       .then((response) => {
         setData(response.data);
         setCaractère(response.data.personality);
+
         setLoading(false);
         // console.log(personality);
       })
@@ -27,6 +28,32 @@ export default function CardById() {
   }, [id]);
 
   if (loading) return <div>Loading...</div>;
+
+  const btnGender = data.gender;
+
+  const genderAliens = () => {
+    if (btnGender === 'F') {
+      return (
+        <button type='button' className='charmeFemale'>
+          Charmez
+        </button>
+      );
+    }
+    if (btnGender === 'M') {
+      return (
+        <button type='button' className='charmeMale'>
+          Charmez
+        </button>
+      );
+    }
+    if (btnGender === 'Autre') {
+      return (
+        <button type='button' className='charme'>
+          Charmez
+        </button>
+      );
+    }
+  };
 
   const {
     age,
@@ -40,39 +67,42 @@ export default function CardById() {
   } = data;
 
   return (
-    <div className='ufoContainer'>
-      <div className='ufoImg'>
-        <img src={image} alt='' />
-      </div>
-      <div className='ufoDescription'>
-        <div className='ufoName'>
-          <h2>{name}</h2>
+    <>
+      <div className='ufoContainer'>
+        <div className='ufoImg'>
+          <img src={image} alt='' />
         </div>
-        <div className='ufoAge'>
-          <div className='ufoDesc'>
-            <WiAlien className='alienIcon' />
-            {age} <IoMdPlanet className='alienIcon' /> {location}
+        <div className='ufoDescription'>
+          <div className='ufoName'>
+            <h2>{name}</h2>
           </div>
-        </div>
-        <div>{description}</div>
-        <div className='ufoDescType'>
-          <div className='alienType'>genre: {gender}</div>
-          <div className='alienType'>espèce: {species}</div>
-        </div>
+          <div className='ufoAge'>
+            <div className='ufoDesc'>
+              <WiAlien className='alienIcon' />
+              {age} <IoMdPlanet className='alienIcon' /> {location}
+            </div>
+          </div>
+          <div>{description}</div>
+          <div className='ufoDescType'>
+            <div className='alienType'>genre: {gender}</div>
+            <div className='alienType'>espèce: {species}</div>
+          </div>
 
-        <div className='ufoPersonality'>
-          <div className='alienType'>personnalité(e): </div>
-          <div className='allPersonality'>
-            {caractère.map((c) => {
-              return (
-                <p>
-                  <li key={c.id}>{personality.join(' / ')}</li>
-                </p>
-              );
-            })}
+          <div className='ufoPersonality'>
+            <div className='alienType'>personnalité(e): </div>
+            <div className='allPersonality'>
+              {caractère.map((c) => {
+                return (
+                  <p>
+                    <li key={c.id}>{personality.join(' / ')}</li>
+                  </p>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <div>{genderAliens()}</div>
+    </>
   );
 }
