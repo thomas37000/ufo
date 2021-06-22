@@ -9,7 +9,7 @@ import './Card.css';
 export default function CardById() {
   const { id } = useParams();
   const [data, setData] = useState({});
-  const [caractère, setCaractère] = useState([]);
+  const [caractere, csetCaractere] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function CardById() {
       .get(`https://spaceprotectionalienapi.herokuapp.com/alien/${id}`)
       .then((response) => {
         setData(response.data);
-        setCaractère(response.data.personality);
+        csetCaractere(response.data.personality);
 
         setLoading(false);
       })
@@ -89,8 +89,8 @@ export default function CardById() {
           <div className='ufoPersonality'>
             <div className='alienType'>personnalité(e): </div>
             <div className='allPersonality'>
-              {caractère.map((data, id) => (
-                <p key={id}>{personality.join(' / ')}</p>
+              {caractere.map((data, id) => (
+                <div>{data}</div>
               ))}
             </div>
           </div>
