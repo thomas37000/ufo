@@ -35,7 +35,8 @@
   justify-content: start;
   font-size: x-large;
 }
-.ufoDesc {
+.ufoDesc,
+.ufoDescType {
   display: flex;
   align-items: center;
 }
@@ -67,14 +68,39 @@
 
 .ufoPersonality {
   display: flex;
-  align-items:baseline;
+  align-items: baseline;
 }
 
 .ufoPersonality li {
   list-style: none;
 }
 
-.ufoDesc, .ufoPersonality {
+.ufoDesc,
+.ufoDescType,
+.ufoPersonality {
   margin-top: 1rem;
+}
 
+@media screen and (max-width: 768px) {
+  .ufoContainer, .ufoPersonality {
+    display: grid;
+  }
+
+  .ufoName {
+    display: flex;
+  }
+
+  .ufoDesc {
+    margin-top: 0;
+  }
+
+  .ufoAge {
+    font-size: large;
+  }
+
+  .ufoName,
+  .ufoAge,
+  .ufoDescType {
+    justify-content: center;
+  }
 }

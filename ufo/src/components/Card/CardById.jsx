@@ -55,7 +55,7 @@ export default function CardById() {
           </div>
         </div>
         <div>{description}</div>
-        <div className='ufoDesc'>
+        <div className='ufoDescType'>
           <div className='alienType'>genre: {gender}</div>
           <div className='alienType'>espèce: {species}</div>
         </div>
