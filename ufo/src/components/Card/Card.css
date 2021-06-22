@@ -49,6 +49,11 @@
   margin: 0 10px;
 }
 
+.alienType {
+  font-size: x-large;
+  margin: 0 10px;
+}
+
 .ufoDescription {
   display: flex;
   flex-direction: column;
@@ -60,6 +65,16 @@
   color: red;
 }
 
+.ufoPersonality {
+  display: flex;
+  align-items:baseline;
+}
+
 .ufoPersonality li {
   list-style: none;
+}
+
+.ufoDesc, .ufoPersonality {
+  margin-top: 1rem;
+
 }

@@ -51,23 +51,26 @@ export default function CardById() {
         <div className='ufoAge'>
           <div className='ufoDesc'>
             <WiAlien className='alienIcon' />
-            {age} <IoMdPlanet className='alienIcon'/> {location}
+            {age} <IoMdPlanet className='alienIcon' /> {location}
           </div>
         </div>
         <div>{description}</div>
-        <div>genre: {gender}</div>
-
-        <div>espèce: {species}</div>
+        <div className='ufoDesc'>
+          <div className='alienType'>genre: {gender}</div>
+          <div className='alienType'>espèce: {species}</div>
+        </div>
 
         <div className='ufoPersonality'>
-          personnalité(e):
-          {caractère.map((c) => {
-            return (
-              <p>
-                <li key={c.id}>{personality.join(' / ')}</li>
-              </p>
-            );
-          })}
+          <div className='alienType'>personnalité(e): </div>
+          <div className='allPersonality'>
+            {caractère.map((c) => {
+              return (
+                <p>
+                  <li key={c.id}>{personality.join(' / ')}</li>
+                </p>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
