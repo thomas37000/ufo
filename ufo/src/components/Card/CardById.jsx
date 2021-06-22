@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -9,7 +10,6 @@ export default function CardById() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [caractère, setCaractère] = useState([]);
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,6 @@ export default function CardById() {
         setCaractère(response.data.personality);
 
         setLoading(false);
-        // console.log(personality);
       })
       .catch((err) => {
         console.log(err);
@@ -87,17 +86,12 @@ export default function CardById() {
             <div className='alienType'>genre: {gender}</div>
             <div className='alienType'>espèce: {species}</div>
           </div>
-
           <div className='ufoPersonality'>
             <div className='alienType'>personnalité(e): </div>
             <div className='allPersonality'>
-              {caractère.map((c) => {
-                return (
-                  <p>
-                    <li key={c.id}>{personality.join(' / ')}</li>
-                  </p>
-                );
-              })}
+              {caractère.map((data, id) => (
+                <p key={id}>{personality.join(' / ')}</p>
+              ))}
             </div>
           </div>
         </div>
