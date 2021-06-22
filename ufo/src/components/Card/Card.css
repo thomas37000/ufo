@@ -62,8 +62,22 @@
 }
 
 .ufoLink {
+  text-decoration: none;
+}
+
+.ufoLinkName {
   font-family: 'Orbitron';
+  font-size: x-large;
+  margin: 1.5rem 0;
   color: red;
+}
+
+.ufoCard:hover {
+  background-color: grey;
+}
+
+.ufoLinkName:hover {
+  color: #f1f1f1;
 }
 
 .ufoPersonality {
@@ -82,7 +96,8 @@
 }
 
 @media screen and (max-width: 768px) {
-  .ufoContainer, .ufoPersonality {
+  .ufoContainer,
+  .ufoPersonality {
     display: grid;
   }
 

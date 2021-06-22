@@ -7,12 +7,12 @@ export default function Card({ data }) {
 
   return (
     <div className='ufoContainer'>
-      <Link to={`/alien/${id}`}>
+      <Link to={`/alien/${id}`} className="ufoLink">
         <div className='ufoCard'>
           <div>
             <img src={image} alt='' />
           </div>
-          <div className="ufoLink">{name}</div>
+          <div className="ufoLinkName">{name}</div>
         </div>
       </Link>
     </div>
