@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -11,6 +12,7 @@ export default function CardById() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [caractere, csetCaractere] = useState([]);
+  const [love, setLove] = useState(true);
   const [charm, setCharm] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -30,16 +32,14 @@ export default function CardById() {
 
   if (loading) return <div>Loading...</div>;
 
-  const charmAlien = () => {
-    setCharm(!charm);
-    setCharm(charm);
-    console.log(charm);
-  };
-
   const toggleCharm = () => {
+    setLove(!love);
+    setCharm(!charm);
     setTimeout(() => {
-      setCharm(!charm);
-    }, 200);
+      setCharm(charm);
+    }, 4000);
+    localStorage.setItem('charm', love);
+    localStorage.setItem('love', name);
   };
 
   const btnGender = data.gender;
@@ -87,8 +87,6 @@ export default function CardById() {
     species,
   } = data;
 
-  const message = `Votre charme a bien était envoyé à ${name} !`;
-
   return (
     <>
       <div className='ufoContainer'>
@@ -100,11 +98,13 @@ export default function CardById() {
           <img src={image} alt='' />
         </div>
         <div className='ufoDescription'>
-          <div className='ufoName'>
-            <h2>{name}</h2>
-          </div>
-          <div className={charm ? 'heartCharm' : 'heartByDefault'}>
-            {charmAlien}
+          <div className='ufoHeader'>
+            <div className='ufoName'>
+              <h2>{name}</h2>
+            </div>
+            <div className={!love ? 'heartLove' : 'heartByDefault'}>
+              {toggleCharm}
+            </div>
           </div>
           <div className='ufoAge'>
             <div className='ufoDesc'>

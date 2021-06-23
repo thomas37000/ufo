@@ -24,7 +24,7 @@
 .ufoImg img {
   border-radius: 50%;
   border: 10px solid #f1f1f1;
-  margin: 1rem;
+  margin: 2rem 1rem;
 }
 
 .ufoName,
@@ -32,8 +32,11 @@
   display: flex;
   justify-content: flex-start;
   font-size: x-large;
+  margin-right: 1rem;
 }
+
 .ufoDesc,
+.ufoHeader,
 .ufoDescType,
 .displayCharm {
   display: flex;
@@ -136,15 +139,14 @@
   );
 }
 
-.heart,
+.heartLove,
 .heartByDefault {
   width: 40px;
   height: 40px;
   background-size: 100%;
-  align-self: flex-start;
 }
 
-.heart {
+.heartLove {
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/35/Emoji_u2665.svg');
 }
 
