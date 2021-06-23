@@ -18,6 +18,7 @@
   background-color: grey;
   color: #fff;
   margin: 0.5rem;
+  position: relative;
 }
 
 .ufoImg img {
@@ -33,7 +34,8 @@
   font-size: x-large;
 }
 .ufoDesc,
-.ufoDescType {
+.ufoDescType,
+.displayCharm {
   display: flex;
   align-items: center;
 }
@@ -79,6 +81,7 @@
 .ufoPersonality {
   display: flex;
   align-items: baseline;
+  margin: 1rem 0 2rem 0;
 }
 
 .ufoPersonality li {
@@ -133,6 +136,42 @@
   );
 }
 
+.heart,
+.heartByDefault {
+  width: 40px;
+  height: 40px;
+  background-size: 100%;
+  align-self: flex-start;
+}
+
+.heart {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/35/Emoji_u2665.svg');
+}
+
+.heartByDefault {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Ei-heart.svg');
+}
+
+.displayCharm {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35%;
+  height: 50px;
+  justify-content: center;
+  background-color: rgba(223, 69, 211, 1);
+  color: #f1f1f1;
+}
+
+.hideCharm {
+  display: none;
+}
+
+.ufoNameCharm {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
 @media screen and (max-width: 768px) {
   .ufoContainer,
   .ufoPersonality {
@@ -155,5 +194,11 @@
   .ufoAge,
   .ufoDescType {
     justify-content: center;
+  }
+
+  .displayCharm {
+    display: grid;
+    width: 100%;
+    position: relative;
   }
 }
