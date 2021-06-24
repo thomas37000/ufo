@@ -1,0 +1,206 @@
+.ufoGrid {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ufoCard {
+  width: 300px;
+  height: 400px;
+  background: #f1f1f1;
+}
+
+.ufoContainer {
+  display: flex;
+  justify-content: space-around;
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: grey;
+  color: #fff;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.ufoImg img {
+  border-radius: 50%;
+  border: 10px solid #f1f1f1;
+  margin: 2rem 1rem;
+}
+
+.ufoName,
+.ufoAge {
+  display: flex;
+  justify-content: flex-start;
+  font-size: x-large;
+  margin-right: 1rem;
+}
+
+.ufoDesc,
+.ufoHeader,
+.ufoDescType,
+.displayCharm {
+  display: flex;
+  align-items: center;
+}
+
+.ufoAge {
+  margin-bottom: 1rem;
+}
+
+.alienIcon {
+  font-size: xx-large;
+  margin: 0 10px;
+}
+
+.alienType {
+  font-size: x-large;
+  margin: 0 10px;
+}
+
+.ufoDescription {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.ufoLink {
+  text-decoration: none;
+}
+
+.ufoLinkName {
+  font-size: x-large;
+  margin: 1.5rem 0;
+  color: red;
+}
+
+.ufoCard:hover {
+  background-color: grey;
+}
+
+.ufoLinkName:hover {
+  color: #f1f1f1;
+}
+
+.ufoPersonality {
+  display: flex;
+  align-items: baseline;
+  margin: 1rem 0 2rem 0;
+}
+
+.ufoPersonality li {
+  list-style: none;
+}
+
+.ufoDesc,
+.ufoDescType,
+.ufoPersonality {
+  margin-top: 1rem;
+}
+
+.ufoLinkName,
+.ufoName,
+.charme {
+  font-family: 'Orbitron';
+}
+
+.charme,
+.charmeFemale,
+.charmeMale {
+  width: 99vw;
+  height: 50px;
+  color: #f1f1f1;
+  font-size: xx-large;
+}
+.charme {
+  background: linear-gradient(
+    90deg,
+    rgba(69, 172, 223, 1) 0%,
+    rgba(121, 9, 102, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.charmeFemale {
+  background: linear-gradient(
+    90deg,
+    rgba(223, 69, 211, 1) 0%,
+    rgba(121, 9, 102, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.charmeMale {
+  background: linear-gradient(
+    90deg,
+    rgba(69, 218, 223, 1) 0%,
+    rgba(44, 9, 121, 1) 100%,
+    rgba(0, 212, 255, 1) 100%,
+    rgba(121, 9, 102, 1) 100%
+  );
+}
+
+.heartLove,
+.heartByDefault {
+  width: 40px;
+  height: 40px;
+  background-size: 100%;
+}
+
+.heartLove {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/35/Emoji_u2665.svg');
+}
+
+.heartByDefault {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Ei-heart.svg');
+}
+
+.displayCharm {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35%;
+  height: 50px;
+  justify-content: center;
+  background-color: rgba(223, 69, 211, 1);
+  color: #f1f1f1;
+}
+
+.hideCharm {
+  display: none;
+}
+
+.ufoNameCharm {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .ufoContainer,
+  .ufoPersonality {
+    display: grid;
+  }
+
+  .ufoName {
+    display: flex;
+  }
+
+  .ufoDesc {
+    margin-top: 0;
+  }
+
+  .ufoAge {
+    font-size: large;
+  }
+
+  .ufoName,
+  .ufoAge,
+  .ufoDescType {
+    justify-content: center;
+  }
+
+  .displayCharm {
+    display: grid;
+    width: 100%;
+    position: relative;
+  }
+}
