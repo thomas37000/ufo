@@ -16,7 +16,8 @@
   border-radius: 10px 10px 0 0;
 }
 
-.ufoContainer, .ufoContainerGrid {
+.ufoContainer,
+.ufoContainerGrid {
   display: flex;
   justify-content: space-around;
   font-family: 'Josefin Sans', sans-serif;
@@ -99,25 +100,29 @@
   list-style: none;
 }
 
-.ufoDesc,
 .ufoDescType,
 .ufoPersonality {
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .ufoLinkName,
 .ufoName,
-.charme {
+.charme,
+.charmeFemale,
+.charmeMale {
   font-family: 'Orbitron';
 }
 
 .charme,
 .charmeFemale,
 .charmeMale {
-  width: 99vw;
+  width: 40%;
   height: 50px;
   color: #f1f1f1;
   font-size: xx-large;
+  border: none;
+  border-radius: 15px;
+  margin-bottom: 1rem;
 }
 .charme {
   background: linear-gradient(

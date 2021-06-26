@@ -128,9 +128,9 @@ export default function CardById() {
               ))}
             </div>
           </div>
+          <div>{genderAliens()}</div>
         </div>
       </div>
-      <div>{genderAliens()}</div>
     </>
   );
 }
