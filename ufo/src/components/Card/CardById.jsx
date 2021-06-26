@@ -12,8 +12,8 @@ export default function CardById() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [caractere, setCaractere] = useState([]);
-  const [love, setLove] = useState(localStorage.getItem('charm' || true));
-  const [charm, setCharm] = useState(true);
+  const [love, setLove] = useState(localStorage.getItem('love' || false));
+  const [charm, setCharm] = useState(localStorage.getItem('charm' || false));
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -39,13 +39,19 @@ export default function CardById() {
     }, 4000);
   };
 
+  const errorMessage = () => {
+    if (charm) {
+      <div>{alert('vous avez déjà envoyé un charme !')}</div>;
+    }
+  };
+
   const Gender = data.gender;
 
   const genderAliens = () => {
     if (Gender === 'F') {
       return (
         <button
-          type='button'
+          type='submit'
           className='charmeFemale'
           onClick={() => toggleCharm()}
         >
@@ -56,7 +62,7 @@ export default function CardById() {
     if (Gender === 'M') {
       return (
         <button
-          type='button'
+          type='submit'
           className='charmeMale'
           onClick={() => toggleCharm()}
         >
@@ -66,7 +72,7 @@ export default function CardById() {
     }
     if (Gender === 'Autre') {
       return (
-        <button type='button' className='charme' onClick={() => toggleCharm()}>
+        <button type='submit' className='charme' onClick={() => toggleCharm()}>
           Charmez
         </button>
       );
@@ -97,8 +103,8 @@ export default function CardById() {
   } = data;
 
   useEffect(() => {
-    localStorage.setItem('charm', love);
-    localStorage.setItem('love', name);
+    localStorage.setItem('love', !love);
+    localStorage.setItem('charm', name);
   }, [love, name]);
 
   return (
