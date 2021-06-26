@@ -11,7 +11,7 @@ import './Card.css';
 export default function CardById() {
   const { id } = useParams();
   const [data, setData] = useState({});
-  const [caractere, csetCaractere] = useState([]);
+  const [caractere, setCaractere] = useState([]);
   const [love, setLove] = useState(localStorage.getItem('charm' || true));
   const [charm, setCharm] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -21,8 +21,7 @@ export default function CardById() {
       .get(`https://spaceprotectionalienapi.herokuapp.com/alien/${id}`)
       .then((response) => {
         setData(response.data);
-        csetCaractere(response.data.personality);
-
+        setCaractere(response.data.personality);
         setLoading(false);
       })
       .catch((err) => {
@@ -74,6 +73,18 @@ export default function CardById() {
     }
   };
 
+  const genderType = () => {
+    if (btnGender === 'F') {
+      return <div className='alienType'>Genre: {gender}emale</div>;
+    }
+    if (btnGender === 'M') {
+      return <div className='alienType'>Genre: {gender}ale</div>;
+    }
+    if (btnGender === 'Autre') {
+      return <div className='alienType'>Genre: {gender}</div>;
+    }
+  };
+
   const {
     age,
     description,
@@ -117,11 +128,11 @@ export default function CardById() {
           </div>
           <div>{description}</div>
           <div className='ufoDescType'>
-            <div className='alienType'>genre: {gender}</div>
-            <div className='alienType'>espèce: {species}</div>
+            <div>{genderType()}</div>
+            <div className='alienType'>Espèce: {species}</div>
           </div>
           <div className='ufoPersonality'>
-            <div className='alienType'>personnalité(e): </div>
+            <div className='alienType'>Personnalité(e): </div>
             <div className='allPersonality'>
               {caractere.map((data, i) => (
                 <div key={i}>{data}</div>
