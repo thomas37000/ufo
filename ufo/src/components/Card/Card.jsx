@@ -6,13 +6,11 @@ export default function Card({ data }) {
   const { id, image, name } = data;
 
   return (
-    <div className='ufoContainer'>
-      <Link to={`/alien/${id}`} className="ufoLink">
+    <div className='ufoContainerGrid'>
+      <Link to={`/alien/${id}`} className='ufoLink'>
         <div className='ufoCard'>
-          <div>
-            <img src={image} alt='' />
-          </div>
-          <div className="ufoLinkName">{name}</div>
+          <img src={image} alt='' />
+          <div className='ufoLinkName'>{name}</div>
         </div>
       </Link>
     </div>

@@ -12,7 +12,7 @@ export default function CardById() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [caractere, csetCaractere] = useState([]);
-  const [love, setLove] = useState(true);
+  const [love, setLove] = useState(localStorage.getItem('charm' || true));
   const [charm, setCharm] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -38,8 +38,6 @@ export default function CardById() {
     setTimeout(() => {
       setCharm(charm);
     }, 4000);
-    localStorage.setItem('charm', love);
-    localStorage.setItem('love', name);
   };
 
   const btnGender = data.gender;
@@ -86,6 +84,11 @@ export default function CardById() {
     personality,
     species,
   } = data;
+
+  useEffect(() => {
+    localStorage.setItem('charm', love);
+    localStorage.setItem('love', name);
+  }, [love, name]);
 
   return (
     <>
