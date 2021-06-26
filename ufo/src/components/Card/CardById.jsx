@@ -39,10 +39,10 @@ export default function CardById() {
     }, 4000);
   };
 
-  const btnGender = data.gender;
+  const Gender = data.gender;
 
   const genderAliens = () => {
-    if (btnGender === 'F') {
+    if (Gender === 'F') {
       return (
         <button
           type='button'
@@ -53,7 +53,7 @@ export default function CardById() {
         </button>
       );
     }
-    if (btnGender === 'M') {
+    if (Gender === 'M') {
       return (
         <button
           type='button'
@@ -64,7 +64,7 @@ export default function CardById() {
         </button>
       );
     }
-    if (btnGender === 'Autre') {
+    if (Gender === 'Autre') {
       return (
         <button type='button' className='charme' onClick={() => toggleCharm()}>
           Charmez
@@ -74,13 +74,13 @@ export default function CardById() {
   };
 
   const genderType = () => {
-    if (btnGender === 'F') {
+    if (Gender === 'F') {
       return <div className='alienType'>Genre: {gender}emale</div>;
     }
-    if (btnGender === 'M') {
+    if (Gender === 'M') {
       return <div className='alienType'>Genre: {gender}ale</div>;
     }
-    if (btnGender === 'Autre') {
+    if (Gender === 'Autre') {
       return <div className='alienType'>Genre: {gender}</div>;
     }
   };
