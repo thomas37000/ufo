@@ -47,13 +47,28 @@ export default function CardById() {
 
   const Gender = data.gender;
 
+  const btnCharm = document.getElementById('yo');
+
+  const charmMe = () => {
+    if (btnCharm) {
+      btnCharm.addEventListener(
+        'click',
+        () => {
+          console.log('test');
+        },
+        { once: true }
+      );
+    }
+  };
+
   const genderAliens = () => {
     if (Gender === 'F') {
       return (
         <button
+          id='yo'
           type='submit'
           className='charmeFemale'
-          onClick={() => toggleCharm()}
+          onClick={() => charmMe()}
         >
           Charmez
         </button>

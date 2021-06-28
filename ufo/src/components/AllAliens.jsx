@@ -6,6 +6,7 @@ import Api from '../api/api';
 import Home from './Home';
 import Card from './Card/Card';
 import './Card/Card.css';
+import './darkMode.css';
 
 const AllAliens = (props, id) => {
   // ---------------------------------------------------------------------------
@@ -13,13 +14,12 @@ const AllAliens = (props, id) => {
   // ---------------------------------------------------------------------------
 
   const [datas, setDatas] = useState([]);
-
   // ---------------------------------------------------------------------------
   // API CALL
   // ---------------------------------------------------------------------------
   useEffect(() => {
     axios.get(Api).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setDatas(res.data);
     });
   }, []);
