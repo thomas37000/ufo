@@ -5,10 +5,10 @@ import Womans from '../components/Genres/AliensWomans';
 import Autre from '../components/Genres/AliensAutre';
 import Mans from '../components/Genres/AliensMans';
 import CardById from '../components/Card/CardById';
-import NavBar from '../components/Nav/Navbar';
+import NavRoute from '../components/Sidebar/NavRoute';
 import AllAliens from '../components/AllAliens';
 import ToggleContainer from './ToggleContainer';
-import ufo from './ufo2.svg';
+import ufo from '../components/images/ufo.svg';
 
 const Routter = () => {
 
@@ -104,7 +104,7 @@ const Routter = () => {
   return (
     <Router>
       <ThemeProvider theme={themeMode}>
-        <NavBar />
+        <NavRoute />
         <GlobalStyles />
         <Toggle theme={theme} toggleTheme={toggleTheme} />
         <Switch>
