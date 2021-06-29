@@ -8,6 +8,7 @@ import CardById from '../components/Card/CardById';
 import NavBar from '../components/Nav/Navbar';
 import AllAliens from '../components/AllAliens';
 import ToggleContainer from './ToggleContainer';
+import ufo from './ufo2.svg';
 
 const Routter = () => {
 
@@ -39,11 +40,11 @@ const Routter = () => {
   };
 
   const darkTheme = {
-    body: '#363537',
+    body: 'linear-gradient(#313536, #15de27, #2a5f32, #15de27)',
     text: '#FAFAFA',
     toggleBorder: '#6B8096',
     // background Btn
-    gradient: 'linear-gradient(#091236, #1E215D)',
+    gradient: 'linear-gradient(#313536,#2a5f32)',
   };
 
   const Toggle = ({ theme, toggleTheme }) => {
@@ -59,11 +60,11 @@ const Routter = () => {
           title='Sun free icon'
         />
         <img
-          src='https://image.flaticon.com/icons/svg/2033/2033921.svg'
+          src={ufo}
           width='224'
           height='224'
-          alt='Moon free icon'
-          title='Moon free icon'
+          alt='ufo free icon'
+          title='ufo free icon'
         />
       </ToggleContainer>
     );
