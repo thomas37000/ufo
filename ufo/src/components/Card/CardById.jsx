@@ -68,7 +68,7 @@ export default function CardById() {
           id='yo'
           type='submit'
           className='charmeFemale'
-          onClick={() => charmMe()}
+          onClick={() => toggleCharm()}
         >
           Charmez
         </button>
