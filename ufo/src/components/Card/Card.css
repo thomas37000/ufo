@@ -8,7 +8,7 @@
 .ufoCard {
   width: 300px;
   height: 400px;
-  background: #f1f1f1;
+  background: var(--white);
   border-radius: 10px;
 }
 
@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-around;
   font-family: 'Josefin Sans', sans-serif;
-  color: #fff;
+  color: var(--white);
   margin: 0.5rem;
   position: relative;
 }
@@ -32,7 +32,7 @@
 
 .ufoImg img {
   border-radius: 50%;
-  border: 10px solid #f1f1f1;
+  border: 10px solid var(--white);
   margin: 2rem 1rem;
 }
 
@@ -79,7 +79,7 @@
 .ufoLinkName {
   font-size: x-large;
   margin: 1.5rem 0;
-  color: red;
+  color: var(--red);
 }
 
 .ufoCard:hover {
@@ -87,7 +87,7 @@
 }
 
 .ufoLinkName:hover {
-  color: #f1f1f1;
+  color: var(--white);
 }
 
 .ufoPersonality {
@@ -118,7 +118,7 @@
 .charmeMale {
   width: 40%;
   height: 50px;
-  color: #f1f1f1;
+  color: var(--white);
   font-size: xx-large;
   border: none;
   border-radius: 15px;
@@ -175,7 +175,7 @@
   height: 50px;
   justify-content: center;
   background-color: rgba(223, 69, 211, 1);
-  color: #f1f1f1;
+  color: var(--white);
 }
 
 .hideCharm {

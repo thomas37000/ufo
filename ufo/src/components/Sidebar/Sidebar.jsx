@@ -9,6 +9,7 @@ import {
   SidebarStyled,
   SidebarWrapper,
 } from './SidebarStyledComponent';
+import logo from '../images/Alien.png';
 import './Sidebar.css';
 
 const Sidebar = ({ show, setIsOpened }) => {
@@ -22,6 +23,11 @@ const Sidebar = ({ show, setIsOpened }) => {
         >
           <span />
         </CloseIcon>
+        <div className='sidebarHome'>
+          <Link to='/'>
+            <img className='logo' src={logo} alt='menu' />
+          </Link>
+        </div>
         <div className='sidebarLinks'>
           <Link to='/aliens-femmes'>Aliens Femmes</Link>
           <Link to='/aliens-hommes'>Aliens Hommes</Link>

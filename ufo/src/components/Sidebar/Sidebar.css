@@ -1,9 +1,26 @@
+.logo {
+  display: flex;
+  width: 35px;
+  height: 35px;
+  margin-left: 30px;
+  border-radius: 50%;
+}
+
+.sidebarHome {
+  margin: 2rem 0 1rem 0;
+}
+
 .sidebarLinks {
   display: flex;
- flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .sidebarLinks a {
-  color: red;
+  color:var(--dark);
+  text-decoration: none;
   margin-bottom: 1rem;
+}
+
+.sidebarLinks a:hover {
+  color:var(--red);
 }

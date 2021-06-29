@@ -7,7 +7,7 @@ const SidebarStyled = styled.div`
   left: 0;
   background-color: #f7f7f7;
   padding: 1rem;
-  max-width: 200px;
+  max-width: 150px;
   height: 50%;
   transform: translateX(${(props) => (props.show ? '0' : '-100%')});
   transition: all 0.3s ease-in-out;

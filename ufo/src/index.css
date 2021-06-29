@@ -14,3 +14,10 @@ code {
     monospace;
 }
 
+:root {
+  --white: #f1f1f1;
+  --dark: #333;
+  --red: #FF0000;
+  --green: #15de27;
+}
+

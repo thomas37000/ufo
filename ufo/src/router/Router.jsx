@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { TinyButton as ScrollUpButton } from 'react-scroll-up-button';
 import Womans from '../components/Genres/AliensWomans';
 import Autre from '../components/Genres/AliensAutre';
 import Mans from '../components/Genres/AliensMans';
@@ -11,10 +12,9 @@ import ToggleContainer from './ToggleContainer';
 import ufo from '../components/images/ufo.svg';
 
 const Routter = () => {
-
   // createGlobalStyle permet de changer le CSS global comme un CONTEXT
   // il est le parent à la place de App.css
-  
+
   const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.body};
@@ -70,8 +70,6 @@ const Routter = () => {
     );
   };
 
-  
-
   const useDarkMode = () => {
     const [theme, setTheme] = useState('light');
 
@@ -114,6 +112,15 @@ const Routter = () => {
           <Route path='/aliens-hommes' component={Mans} />
           <Route path='/aliens-autre-genres' component={Autre} />
         </Switch>
+        <ScrollUpButton
+          style={{
+            backgroundColor: 'var(--green)',
+            width: '40px',
+            height: '40px',
+            outline: 'none',
+            transform: 'translateY(-3rem) translateX(1.5rem)',
+          }}
+        />
       </ThemeProvider>
     </Router>
   );

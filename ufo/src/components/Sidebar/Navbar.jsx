@@ -13,13 +13,29 @@ const NavWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   text-align: right;
+  color: var(--dark);
 
+  .navRight {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .sidebarLogo,
   .logo {
     display: flex;
     width: 35px;
     height: 35px;
-    margin-left: 30px;
     border-radius: 50%;
+  }
+
+  .logo {
+    margin-left: 30px;
+  }
+
+  .sidebarLogo {
+    margin: 0 20px;
+    cursor: pointer;
   }
 `;
 
@@ -29,13 +45,15 @@ const Navbar = ({ toggleMenu }) => {
       <Link to='/'>
         <img className='logo' src={logo} alt='menu' />
       </Link>
-
-      <img
-        className='logo'
-        src={ufo}
-        alt='sidebar'
-        onClick={() => toggleMenu(true)}
-      />
+      <div className='navRight'>
+        <div>click me {'->'} </div>
+        <img
+          className='sidebarLogo'
+          src={ufo}
+          alt='sidebar'
+          onClick={() => toggleMenu(true)}
+        />
+      </div>
     </NavWrapper>
   );
 };
