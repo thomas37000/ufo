@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 
 export default function NavRoute() {
   const [isOpened, setIsOpened] = useState(false);
-  
+
   return (
     <>
       <Navbar toggleMenu={setIsOpened} />
