@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { TinyButton as ScrollUpButton } from 'react-scroll-up-button';
-import ParamsContextProvider from '../components/Context/ParamsContext';
 import Womans from '../components/Genres/AliensWomans';
 import Autre from '../components/Genres/AliensAutre';
 import Mans from '../components/Genres/AliensMans';
@@ -107,13 +106,11 @@ const Routter = () => {
         <GlobalStyles />
         <Toggle theme={theme} toggleTheme={toggleTheme} />
         <Switch>
-          <ParamsContextProvider>
-            <Route exact path='/' component={AllAliens} />
-            <Route path='/alien/:id' component={CardById} />
-            <Route path='/aliens-femmes' component={Womans} />
-            <Route path='/aliens-hommes' component={Mans} />
-            <Route path='/aliens-autre-genres' component={Autre} />
-          </ParamsContextProvider>
+          <Route exact path='/' component={AllAliens} />
+          <Route path='/alien/:id' component={CardById} />
+          <Route path='/aliens-femmes' component={Womans} />
+          <Route path='/aliens-hommes' component={Mans} />
+          <Route path='/aliens-autre-genres' component={Autre} />
         </Switch>
         <ScrollUpButton
           style={{
