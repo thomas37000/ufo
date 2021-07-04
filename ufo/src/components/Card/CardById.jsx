@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ParamsContext } from '../Context/ParamsContext';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { IoMdPlanet } from 'react-icons/io';
@@ -9,12 +10,14 @@ import Charm from './Charm';
 import './Card.css';
 
 export default function CardById() {
+  const { states } = useContext(ParamsContext);
+
   const { id } = useParams();
   const [data, setData] = useState({});
   const [caractere, setCaractere] = useState([]);
-  const [love, setLove] = useState(localStorage.getItem('love' || false));
-  const [charm, setCharm] = useState(!false);
-  const [loading, setLoading] = useState(false);
+  const [love, setLove] = useState(states.love);
+  const [charm, setCharm] = useState(states.charm);
+  // const [loading, setLoading] = useState(false);
   console.log('défault state:', charm);
 
   useEffect(() => {
@@ -23,14 +26,11 @@ export default function CardById() {
       .then((response) => {
         setData(response.data);
         setCaractere(response.data.personality);
-        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [id]);
-
-  if (loading) return <div>Loading...</div>;
 
   const toggleCharm = () => {
     setLove(!love);
@@ -92,7 +92,11 @@ export default function CardById() {
     }
     if (Gender === 'Autre') {
       return (
-        <button type='submit' className='charme' onClick={() => displayMessage()}>
+        <button
+          type='submit'
+          className='charme'
+          onClick={() => displayMessage()}
+        >
           Charmez
         </button>
       );
@@ -124,8 +128,19 @@ export default function CardById() {
 
   useEffect(() => {
     localStorage.setItem('love', !love);
-    localStorage.setItem('charm', name);
-  }, [love, name]);
+    localStorage.setItem('charm', !charm);
+  }, [love, charm]);
+
+  // useEffect(() => {
+  //   const localLove = window.localStorage.getItem('love');
+  //   const localCharm = window.localStorage.getItem('charm');
+
+  //   if (localCharm) {
+  //     setCharm(localCharm);
+  //   } else {
+  //     window.localStorage.setItem('theme', 'light');
+  //   }
+  // }, []);
 
   return (
     <>
