@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import React, { createContext, useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
@@ -7,23 +8,18 @@ import axios from 'axios';
 export const ParamsContext = createContext(null);
 
 const ParamsContextProvider = (props) => {
-  const { id } = useParams();
-  const [setData] = useState({});
-  const [setCaractere] = useState([]);
-  const [love, setLove] = useState(localStorage.getItem('love', false));
-  const [charm, setCharm] = useState(localStorage.getItem('charm', false));
+  const getCharm = localStorage.getItem('charm');
+  console.log('stringify state charm', getCharm);
+  const parseCharm = JSON.parse(getCharm) !== false;
+  console.log('getCharm parse: ', parseCharm);
 
-  useEffect(() => {
-    axios
-      .get(`https://spaceprotectionalienapi.herokuapp.com/alien/${id}`)
-      .then((response) => {
-        setData(response.data);
-        setCaractere(response.data.personality);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [id]);
+  const getLove = localStorage.getItem('love');
+  console.log('stringify state love', getCharm);
+  const parseLove = JSON.parse(getLove) !== false;
+  console.log('getLove parse: ', parseLove);
+
+  const [love, setLove] = useState(parseLove);
+  const [charm, setCharm] = useState(parseCharm);
 
   const states = useMemo(
     () => ({

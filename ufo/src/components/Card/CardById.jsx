@@ -9,7 +9,7 @@ import { WiAlien } from 'react-icons/wi';
 import Charm from './Charm';
 import './Card.css';
 
-export default function CardById() {
+export default function CardById(values) {
   const { states } = useContext(ParamsContext);
 
   const { id } = useParams();
@@ -18,7 +18,6 @@ export default function CardById() {
   const [love, setLove] = useState(states.love);
   const [charm, setCharm] = useState(states.charm);
   // const [loading, setLoading] = useState(false);
-  console.log('défault state:', charm);
 
   useEffect(() => {
     axios
@@ -38,17 +37,19 @@ export default function CardById() {
     // setTimeout(() => {
     //   setCharm(charm);
     // }, 4000);
+    console.log(charm);
   };
 
   const errorMessage = () => {
-    if (!charm) {
+    if (charm) {
       <div>{alert('vous avez déjà envoyé un charme !')}</div>;
     }
   };
 
   const displayMessage = () => {
-    charm ? toggleCharm() : errorMessage();
+    !charm ? toggleCharm() : errorMessage();
   };
+  console.log(!charm);
 
   const Gender = data.gender;
 
@@ -127,25 +128,19 @@ export default function CardById() {
   } = data;
 
   useEffect(() => {
-    localStorage.setItem('love', !love);
-    localStorage.setItem('charm', !charm);
-  }, [love, charm]);
+    const charmStorage = 'false';
+    console.log('default Charm state', JSON.stringify(charmStorage));
+    localStorage.setItem('charm', JSON.stringify(charmStorage));
 
-  // useEffect(() => {
-  //   const localLove = window.localStorage.getItem('love');
-  //   const localCharm = window.localStorage.getItem('charm');
-
-  //   if (localCharm) {
-  //     setCharm(localCharm);
-  //   } else {
-  //     window.localStorage.setItem('theme', 'light');
-  //   }
-  // }, []);
+    const loveStorage = 'false';
+    console.log('default Love state', JSON.stringify(loveStorage));
+    localStorage.setItem('love', JSON.stringify(loveStorage));
+  }, [charm, love]);
 
   return (
     <>
       <div className='ufoContainer'>
-        <div className={!charm ? 'displayCharm' : 'hideCharm'}>
+        <div className={charm ? 'displayCharm' : 'hideCharm'}>
           Votre charme a bien était envoyé à{' '}
           <span className='ufoNameCharm'>{name}</span>
         </div>
@@ -157,7 +152,7 @@ export default function CardById() {
             <div className='ufoName'>
               <h2>{name}</h2>
             </div>
-            <div className={!love ? 'heartLove' : 'heartByDefault'}>
+            <div className={love ? 'heartLove' : 'heartByDefault'}>
               {toggleCharm}
             </div>
           </div>
