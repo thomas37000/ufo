@@ -53,20 +53,6 @@ export default function CardById(values) {
 
   const Gender = data.gender;
 
-  const btnCharm = document.getElementById('yo');
-
-  const charmMe = () => {
-    if (btnCharm) {
-      btnCharm.addEventListener(
-        'click',
-        () => {
-          console.log('test');
-        },
-        { once: true }
-      );
-    }
-  };
-
   const genderAliens = () => {
     if (Gender === 'F') {
       return (
@@ -116,6 +102,11 @@ export default function CardById(values) {
     }
   };
 
+  const cancelCharm = () => {
+    setLove(!love);
+    setCharm(!charm);
+  };
+
   const {
     age,
     description,
@@ -152,8 +143,16 @@ export default function CardById(values) {
             <div className='ufoName'>
               <h2>{name}</h2>
             </div>
-            <div className={love ? 'heartLove' : 'heartByDefault'}>
-              {toggleCharm}
+            <div>
+              <button
+                type='button'
+                onClick={() => cancelCharm()}
+                className='btnCancel'
+              >
+                <div className={love ? 'heartLove' : 'heartByDefault'}>
+                  {toggleCharm}
+                </div>
+              </button>
             </div>
           </div>
           <div className='ufoAge'>

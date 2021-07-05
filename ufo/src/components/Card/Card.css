@@ -167,6 +167,11 @@
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Ei-heart.svg');
 }
 
+.btnCancel {
+  background: transparent;
+  border: none;
+}
+
 .displayCharm {
   position: absolute;
   top: 0;
