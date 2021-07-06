@@ -42,7 +42,7 @@ const NavWrapper = styled.div`
 const Navbar = ({ toggleMenu }) => {
   return (
     <NavWrapper>
-      <Link to='/'>
+      <Link to='/aliens'>
         <img className='logo' src={logo} alt='menu' />
       </Link>
       <div className='navRight'>

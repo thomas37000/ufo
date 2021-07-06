@@ -24,7 +24,7 @@ const Sidebar = ({ show, setIsOpened }) => {
           <span />
         </CloseIcon>
         <div className='sidebarHome'>
-          <Link to='/'>
+          <Link to='/aliens'>
             <img className='logo' src={logo} alt='menu' />
           </Link>
         </div>

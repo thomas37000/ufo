@@ -11,6 +11,7 @@ import NavRoute from '../components/Sidebar/NavRoute';
 import AllAliens from '../components/AllAliens';
 import ToggleContainer from './ToggleContainer';
 import ufo from '../components/images/ufo.svg';
+import OnLoad from '../components/OnLoad';
 
 const Routter = () => {
   // createGlobalStyle permet de changer le CSS global comme un CONTEXT
@@ -100,15 +101,22 @@ const Routter = () => {
   const [theme, toggleTheme] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
+  const [display] = useState(true);
   return (
     <Router>
       <ThemeProvider theme={themeMode}>
         <NavRoute />
         <GlobalStyles />
         <Toggle theme={theme} toggleTheme={toggleTheme} />
+        {/* {display ? (
+          <Route path='/' component={OnLoad} />
+        ) : (
+          <> */}
+
         <Switch>
           <ParamsContextProvider>
-            <Route exact path='/' component={AllAliens} />
+            <Route exact path='/' component={OnLoad} />
+            <Route path='/aliens' component={AllAliens} />
             <Route path='/alien/:id' component={CardById} />
             <Route path='/aliens-femmes' component={Womans} />
             <Route path='/aliens-hommes' component={Mans} />
@@ -124,6 +132,8 @@ const Routter = () => {
             transform: 'translateY(-3rem) translateX(1.5rem)',
           }}
         />
+        {/* </>
+        )} */}
       </ThemeProvider>
     </Router>
   );

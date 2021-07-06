@@ -38,3 +38,36 @@
 h1 {
   font-family: 'Orbitron', sans-serif;
 }
+
+.onLoad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homeContainer::before {
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../src/components/images/ufo-home.svg');
+  background-repeat: no-repeat;
+  z-index: -1;
+  position: fixed;
+  margin-top: 5rem;
+  margin-left: -20rem;
+}
+
+.enter {
+  width: 15%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: red;
+  color: var(--white);
+}
+
+@media screen and (max-width: 768px) {
+  .enter {
+    width: 30%;
+  }
+}
