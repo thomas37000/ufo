@@ -18,6 +18,9 @@ export default function CardById(values) {
   const [love, setLove] = useState(states.love);
   const [charm, setCharm] = useState(states.charm);
   // const [loading, setLoading] = useState(false);
+  
+  // console.log('love state', love);
+  // console.log('charm state', charm);
 
   useEffect(() => {
     axios
@@ -34,9 +37,9 @@ export default function CardById(values) {
   const toggleCharm = () => {
     setLove(!love);
     setCharm(!charm);
-    // setTimeout(() => {
-    //   setCharm(charm);
-    // }, 4000);
+    setTimeout(() => {
+      document.getElementById('charmMessage').style.display = 'none';
+    }, 4000);
     console.log(charm);
   };
 
@@ -49,7 +52,6 @@ export default function CardById(values) {
   const displayMessage = () => {
     !charm ? toggleCharm() : errorMessage();
   };
-  console.log(!charm);
 
   const Gender = data.gender;
 
@@ -90,6 +92,48 @@ export default function CardById(values) {
     }
   };
 
+  const cancelCharm = () => {
+    setLove(!love);
+    setCharm(!charm);
+  };
+
+  const cancelGenderAliens = () => {
+    if (Gender === 'F') {
+      return (
+        <button
+          id='yo'
+          type='submit'
+          className='charmeFemale'
+          onClick={() => cancelCharm()}
+        >
+          Annulez
+        </button>
+      );
+    }
+    if (Gender === 'M') {
+      return (
+        <button
+          type='submit'
+          className='charmeMale'
+          onClick={() => cancelCharm()}
+        >
+          Annulez
+        </button>
+      );
+    }
+    if (Gender === 'Autre') {
+      return (
+        <button type='submit' className='charme' onClick={() => cancelCharm()}>
+          Annulez
+        </button>
+      );
+    }
+  };
+
+  const displayBtn = () => {
+    return !charm ? genderAliens() : cancelGenderAliens();
+  };
+
   const genderType = () => {
     if (Gender === 'F') {
       return <div className='alienType'>Genre: {gender}emale</div>;
@@ -102,9 +146,31 @@ export default function CardById(values) {
     }
   };
 
-  const cancelCharm = () => {
-    setLove(!love);
-    setCharm(!charm);
+  const toggleHeart = () => {
+    return (
+      <div className={love ? 'heartLove' : 'heartByDefault'}>{toggleCharm}</div>
+    );
+  };
+
+  const errorHeart = () => {
+    if (love) {
+      return (
+        <button
+          type='button'
+          onClick={() => cancelCharm()}
+          className='btnCancel'
+          disabled
+        >
+          <div className={love ? 'heartLove' : 'heartByDefault'}>
+            {toggleCharm}
+          </div>
+        </button>
+      );
+    }
+  };
+
+  const displayHeart = () => {
+    !love ? toggleHeart() : errorHeart();
   };
 
   const {
@@ -120,18 +186,18 @@ export default function CardById(values) {
 
   useEffect(() => {
     const charmStorage = 'false';
-    console.log('default Charm state', JSON.stringify(charmStorage));
-    localStorage.setItem('charm', JSON.stringify(charmStorage));
+    // console.log('default Charm state', JSON.stringify(charmStorage));
+    window.localStorage.setItem('charm', JSON.stringify(charmStorage));
 
     const loveStorage = 'false';
-    console.log('default Love state', JSON.stringify(loveStorage));
-    localStorage.setItem('love', JSON.stringify(loveStorage));
+    // console.log('default Love state', JSON.stringify(loveStorage));
+    window.localStorage.setItem('love', JSON.stringify(loveStorage));
   }, [charm, love]);
 
   return (
     <>
       <div className='ufoContainer'>
-        <div className={charm ? 'displayCharm' : 'hideCharm'}>
+        <div id='charmMessage' className={charm ? 'displayCharm' : 'hideCharm'}>
           Votre charme a bien était envoyé à{' '}
           <span className='ufoNameCharm'>{name}</span>
         </div>
@@ -149,9 +215,7 @@ export default function CardById(values) {
                 onClick={() => cancelCharm()}
                 className='btnCancel'
               >
-                <div className={love ? 'heartLove' : 'heartByDefault'}>
-                  {toggleCharm}
-                </div>
+                <div className={love ? 'heartLove' : 'heartByDefault'} />
               </button>
             </div>
           </div>
@@ -174,7 +238,9 @@ export default function CardById(values) {
               ))}
             </div>
           </div>
-          <div>{genderAliens()}</div>
+          <div>{displayBtn()}</div>
+          {/* <div>{genderAliens()}</div>
+          <div>{cancelGenderAliens()}</div> */}
         </div>
       </div>
     </>
