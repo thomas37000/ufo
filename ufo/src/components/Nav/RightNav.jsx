@@ -19,11 +19,7 @@ const Slideburger = styled.ul`
     color: #262a2d !important;
   }
   a:hover {
-    color: #fff !important;
-  }
-
-  li:hover {
-    background: grey;
+    color: red !important;
   }
 
   .logoBurger {

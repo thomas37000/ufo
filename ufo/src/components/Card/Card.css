@@ -8,22 +8,31 @@
 .ufoCard {
   width: 300px;
   height: 400px;
-  background: #f1f1f1;
+  background: var(--white);
+  border-radius: 10px;
 }
 
-.ufoContainer {
+.ufoCard Img {
+  border-radius: 10px 10px 0 0;
+}
+
+.ufoContainer,
+.ufoContainerGrid {
   display: flex;
   justify-content: space-around;
   font-family: 'Josefin Sans', sans-serif;
-  background-color: grey;
-  color: #fff;
+  color: var(--white);
   margin: 0.5rem;
   position: relative;
 }
 
+.ufoContainer {
+  background-color: grey;
+}
+
 .ufoImg img {
   border-radius: 50%;
-  border: 10px solid #f1f1f1;
+  border: 10px solid var(--white);
   margin: 2rem 1rem;
 }
 
@@ -70,7 +79,7 @@
 .ufoLinkName {
   font-size: x-large;
   margin: 1.5rem 0;
-  color: red;
+  color: var(--red);
 }
 
 .ufoCard:hover {
@@ -78,7 +87,7 @@
 }
 
 .ufoLinkName:hover {
-  color: #f1f1f1;
+  color: var(--white);
 }
 
 .ufoPersonality {
@@ -91,25 +100,29 @@
   list-style: none;
 }
 
-.ufoDesc,
 .ufoDescType,
 .ufoPersonality {
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .ufoLinkName,
 .ufoName,
-.charme {
+.charme,
+.charmeFemale,
+.charmeMale {
   font-family: 'Orbitron';
 }
 
 .charme,
 .charmeFemale,
 .charmeMale {
-  width: 99vw;
+  width: 40%;
   height: 50px;
-  color: #f1f1f1;
+  color: var(--white);
   font-size: xx-large;
+  border: none;
+  border-radius: 15px;
+  margin-bottom: 1rem;
 }
 .charme {
   background: linear-gradient(
@@ -154,6 +167,11 @@
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Ei-heart.svg');
 }
 
+.btnCancel {
+  background: transparent;
+  border: none;
+}
+
 .displayCharm {
   position: absolute;
   top: 0;
@@ -162,7 +180,7 @@
   height: 50px;
   justify-content: center;
   background-color: rgba(223, 69, 211, 1);
-  color: #f1f1f1;
+  color: var(--white);
 }
 
 .hideCharm {

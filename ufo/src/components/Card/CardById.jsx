@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ParamsContext } from '../Context/ParamsContext';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { IoMdPlanet } from 'react-icons/io';
@@ -8,72 +9,168 @@ import { WiAlien } from 'react-icons/wi';
 import Charm from './Charm';
 import './Card.css';
 
-export default function CardById() {
+export default function CardById(values) {
+  const { states } = useContext(ParamsContext);
+
   const { id } = useParams();
   const [data, setData] = useState({});
-  const [caractere, csetCaractere] = useState([]);
-  const [love, setLove] = useState(true);
-  const [charm, setCharm] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [caractere, setCaractere] = useState([]);
+  const [love, setLove] = useState(states.love);
+  const [charm, setCharm] = useState(states.charm);
+  // const [loading, setLoading] = useState(false);
+  
+  // console.log('love state', love);
+  // console.log('charm state', charm);
 
   useEffect(() => {
     axios
       .get(`https://spaceprotectionalienapi.herokuapp.com/alien/${id}`)
       .then((response) => {
         setData(response.data);
-        csetCaractere(response.data.personality);
-
-        setLoading(false);
+        setCaractere(response.data.personality);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
-
   const toggleCharm = () => {
     setLove(!love);
     setCharm(!charm);
     setTimeout(() => {
-      setCharm(charm);
+      document.getElementById('charmMessage').style.display = 'none';
     }, 4000);
-    localStorage.setItem('charm', love);
-    localStorage.setItem('love', name);
+    console.log(charm);
   };
 
-  const btnGender = data.gender;
+  const errorMessage = () => {
+    if (charm) {
+      <div>{alert('vous avez déjà envoyé un charme !')}</div>;
+    }
+  };
+
+  const displayMessage = () => {
+    !charm ? toggleCharm() : errorMessage();
+  };
+
+  const Gender = data.gender;
 
   const genderAliens = () => {
-    if (btnGender === 'F') {
+    if (Gender === 'F') {
       return (
         <button
-          type='button'
+          id='yo'
+          type='submit'
           className='charmeFemale'
-          onClick={() => toggleCharm()}
+          onClick={() => displayMessage()}
         >
           Charmez
         </button>
       );
     }
-    if (btnGender === 'M') {
+    if (Gender === 'M') {
+      return (
+        <button
+          type='submit'
+          className='charmeMale'
+          onClick={() => displayMessage()}
+        >
+          Charmez
+        </button>
+      );
+    }
+    if (Gender === 'Autre') {
+      return (
+        <button
+          type='submit'
+          className='charme'
+          onClick={() => displayMessage()}
+        >
+          Charmez
+        </button>
+      );
+    }
+  };
+
+  const cancelCharm = () => {
+    setLove(!love);
+    setCharm(!charm);
+  };
+
+  const cancelGenderAliens = () => {
+    if (Gender === 'F') {
+      return (
+        <button
+          id='yo'
+          type='submit'
+          className='charmeFemale'
+          onClick={() => cancelCharm()}
+        >
+          Annulez
+        </button>
+      );
+    }
+    if (Gender === 'M') {
+      return (
+        <button
+          type='submit'
+          className='charmeMale'
+          onClick={() => cancelCharm()}
+        >
+          Annulez
+        </button>
+      );
+    }
+    if (Gender === 'Autre') {
+      return (
+        <button type='submit' className='charme' onClick={() => cancelCharm()}>
+          Annulez
+        </button>
+      );
+    }
+  };
+
+  const displayBtn = () => {
+    return !charm ? genderAliens() : cancelGenderAliens();
+  };
+
+  const genderType = () => {
+    if (Gender === 'F') {
+      return <div className='alienType'>Genre: {gender}emale</div>;
+    }
+    if (Gender === 'M') {
+      return <div className='alienType'>Genre: {gender}ale</div>;
+    }
+    if (Gender === 'Autre') {
+      return <div className='alienType'>Genre: {gender}</div>;
+    }
+  };
+
+  const toggleHeart = () => {
+    return (
+      <div className={love ? 'heartLove' : 'heartByDefault'}>{toggleCharm}</div>
+    );
+  };
+
+  const errorHeart = () => {
+    if (love) {
       return (
         <button
           type='button'
-          className='charmeMale'
-          onClick={() => toggleCharm()}
+          onClick={() => cancelCharm()}
+          className='btnCancel'
+          disabled
         >
-          Charmez
+          <div className={love ? 'heartLove' : 'heartByDefault'}>
+            {toggleCharm}
+          </div>
         </button>
       );
     }
-    if (btnGender === 'Autre') {
-      return (
-        <button type='button' className='charme' onClick={() => toggleCharm()}>
-          Charmez
-        </button>
-      );
-    }
+  };
+
+  const displayHeart = () => {
+    !love ? toggleHeart() : errorHeart();
   };
 
   const {
@@ -87,10 +184,20 @@ export default function CardById() {
     species,
   } = data;
 
+  useEffect(() => {
+    const charmStorage = 'false';
+    // console.log('default Charm state', JSON.stringify(charmStorage));
+    window.localStorage.setItem('charm', JSON.stringify(charmStorage));
+
+    const loveStorage = 'false';
+    // console.log('default Love state', JSON.stringify(loveStorage));
+    window.localStorage.setItem('love', JSON.stringify(loveStorage));
+  }, [charm, love]);
+
   return (
     <>
       <div className='ufoContainer'>
-        <div className={!charm ? 'displayCharm' : 'hideCharm'}>
+        <div id='charmMessage' className={charm ? 'displayCharm' : 'hideCharm'}>
           Votre charme a bien était envoyé à{' '}
           <span className='ufoNameCharm'>{name}</span>
         </div>
@@ -102,8 +209,14 @@ export default function CardById() {
             <div className='ufoName'>
               <h2>{name}</h2>
             </div>
-            <div className={!love ? 'heartLove' : 'heartByDefault'}>
-              {toggleCharm}
+            <div>
+              <button
+                type='button'
+                onClick={() => cancelCharm()}
+                className='btnCancel'
+              >
+                <div className={love ? 'heartLove' : 'heartByDefault'} />
+              </button>
             </div>
           </div>
           <div className='ufoAge'>
@@ -114,20 +227,22 @@ export default function CardById() {
           </div>
           <div>{description}</div>
           <div className='ufoDescType'>
-            <div className='alienType'>genre: {gender}</div>
-            <div className='alienType'>espèce: {species}</div>
+            <div>{genderType()}</div>
+            <div className='alienType'>Espèce: {species}</div>
           </div>
           <div className='ufoPersonality'>
-            <div className='alienType'>personnalité(e): </div>
+            <div className='alienType'>Personnalité(e): </div>
             <div className='allPersonality'>
               {caractere.map((data, i) => (
                 <div key={i}>{data}</div>
               ))}
             </div>
           </div>
+          <div>{displayBtn()}</div>
+          {/* <div>{genderAliens()}</div>
+          <div>{cancelGenderAliens()}</div> */}
         </div>
       </div>
-      <div>{genderAliens()}</div>
     </>
   );
 }

@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background: lightgray;
 }
 
 .App-logo {
@@ -36,6 +35,65 @@
   }
 }
 
-h1 {
+h1,
+.enter {
   font-family: 'Orbitron', sans-serif;
+}
+
+.onLoad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homeContainer::before {
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../src/components/images/ufo-home.svg');
+  background-repeat: no-repeat;
+  z-index: -1;
+  position: fixed;
+  margin-top: 5rem;
+  margin-left: -20rem;
+}
+
+.enter {
+  width: 20%;
+  height: 60px;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  cursor: all-scroll;
+  color: var(--white);
+  text-transform: uppercase;
+  background-image: linear-gradient(to top left, #2a5f32, #15de27);
+}
+
+.mount2 {
+  margin: 3rem 0;
+  width: 100px;
+  padding: 0.5rem;
+  font-weight: bold;
+  background: rgb(86, 151, 86);
+  color: #f1f1f1;
+  border-radius: 5px;
+  border: none;
+}
+
+.mount2 {
+  margin-bottom:10rem;
+}
+
+.item {
+  width: 100px;
+  height: 100px;
+  background-color: crimson;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .enter {
+    width: 30%;
+  }
 }

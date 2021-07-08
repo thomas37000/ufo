@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-const Home = props => {
+const Home = (props) => {
   return (
     <div>
       <h1>The Space Protection Alien (SPA) API</h1>
@@ -10,7 +10,7 @@ const Home = props => {
 };
 
 // Home.propTypes = {
-  
+
 // };
 
 export default Home;
